@@ -1,0 +1,288 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+paths:
+  /api/jobs:
+    get:
+      tags:
+      - job-controller
+      operationId: getAllJobs
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Job'
+    post:
+      tags:
+      - job-controller
+      operationId: registerJob
+      parameters:
+      - name: user
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Job'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Job'
+  /api/jobs/{id}/run:
+    post:
+      tags:
+      - job-controller
+      operationId: runJob
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: user
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Job'
+  /api/jobs/{id}/manual:
+    post:
+      tags:
+      - job-controller
+      operationId: manualJob
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: user
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Job'
+  /api/jobs/{id}/kill:
+    post:
+      tags:
+      - job-controller
+      operationId: killJob
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: user
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Job'
+  /api/jobs/{id}/force-run:
+    post:
+      tags:
+      - job-controller
+      operationId: forceRunJob
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: user
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Job'
+  /api/jobs/{id}/clean:
+    post:
+      tags:
+      - job-controller
+      operationId: cleanJob
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: user
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Job'
+  /api/jobs/{id}:
+    get:
+      tags:
+      - job-controller
+      operationId: getJob
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Job'
+  /api/jobs/{id}/executions:
+    get:
+      tags:
+      - job-controller
+      operationId: getExecutionsForJob
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JobExecution'
+components:
+  schemas:
+    Job:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+        payload:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        executions:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobExecution'
+        dependency:
+          $ref: '#/components/schemas/Job'
+        state:
+          type: string
+          enum:
+          - WAITING
+          - RUNNING
+          - SUCCESS
+          - FAILED
+          - CANCELLED
+          - MANUAL
+        action:
+          type: string
+          enum:
+          - NONE
+          - CANCEL
+          - MANUAL
+          - FORCE_RUN
+          - RUN
+          - CLEAN
+        submittedBy:
+          type: string
+        lastModifiedBy:
+          type: string
+        lastAction:
+          type: string
+        lastActionTime:
+          type: string
+          format: date-time
+        hostPool:
+          type: array
+          items:
+            type: string
+        assignedHost:
+          type: string
+    JobExecution:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        job:
+          $ref: '#/components/schemas/Job'
+        status:
+          type: string
+        logs:
+          type: string
+        startedAt:
+          type: string
+          format: date-time
+        finishedAt:
+          type: string
+          format: date-time
+        triggeredBy:
+          type: string
+        action:
+          type: string

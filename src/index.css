@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light dark;
+  --scrollbar-track: theme('colors.zinc.100');
+  --scrollbar-thumb: theme('colors.zinc.300');
+}
+
+.dark {
+  --scrollbar-track: theme('colors.zinc.800');
+  --scrollbar-thumb: theme('colors.zinc.700');
+}
+
+html {
+  @apply h-full w-full scroll-smooth;
+}
+
+body {
+  @apply h-full w-full bg-zinc-50 text-zinc-900 antialiased font-sans;
+  @apply dark:bg-zinc-900 dark:text-zinc-100;
+}
+
+#root {
+  @apply h-full w-full isolate;
+}
+
+::selection {
+  @apply bg-primary-500/20 text-primary-900 dark:text-primary-100;
+}
+
+/* Modern scrollbar */
+::-webkit-scrollbar {
+  @apply w-2 h-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-zinc-100 dark:bg-zinc-800 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-zinc-300 dark:bg-zinc-700 rounded-full hover:bg-zinc-400 dark:hover:bg-zinc-600 transition-colors;
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/70 dark:bg-zinc-800/70 backdrop-blur-md border border-zinc-200/50 dark:border-zinc-700/50 shadow-soft;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-xl font-medium transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-primary-500 hover:bg-primary-600 text-white shadow-md hover:shadow-lg active:shadow-sm;
+  }
+
+  .btn-secondary {
+    @apply bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-800 dark:text-zinc-200;
+  }
+
+  .card {
+    @apply bg-white dark:bg-zinc-800 rounded-xl border border-zinc-200 dark:border-zinc-700 shadow-soft overflow-hidden;
+  }
+}
