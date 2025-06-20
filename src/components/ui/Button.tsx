@@ -8,10 +8,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variants = {
-  primary: 'bg-gradient-to-r from-primary-500 to-primary-400 hover:from-primary-600 hover:to-primary-500 text-white border-primary-300',
-  secondary: 'bg-gradient-to-r from-zinc-100 to-zinc-200 hover:from-zinc-200 hover:to-zinc-300 text-zinc-800 border-zinc-300 dark:from-zinc-800 dark:to-zinc-700 dark:hover:from-zinc-700 dark:hover:to-zinc-600 dark:text-zinc-200 dark:border-zinc-600',
-  accent: 'bg-gradient-to-r from-accent-400 to-accent-500 hover:from-accent-500 hover:to-accent-400 text-white border-accent-400',
-  outline: 'bg-transparent border-zinc-300 text-zinc-700 hover:bg-zinc-50 dark:border-zinc-600 dark:text-zinc-300 dark:hover:bg-zinc-800/50'
+  primary: 'bg-gradient-to-r from-primary-500 to-primary-700 hover:from-primary-600 hover:to-primary-800 text-white border-primary-400 dark:from-primary-700 dark:to-primary-500 dark:hover:from-primary-800 dark:hover:to-primary-600 dark:text-primary-50 dark:border-primary-600',
+  secondary: 'bg-gradient-to-r from-zinc-100 to-zinc-200 hover:from-zinc-200 hover:to-zinc-300 text-zinc-800 border-zinc-300 dark:from-primary-900 dark:to-primary-800 dark:hover:from-primary-800 dark:hover:to-primary-700 dark:text-primary-100 dark:border-primary-700',
+  accent: 'bg-gradient-to-r from-primary-400 to-primary-600 hover:from-primary-500 hover:to-primary-700 text-white border-primary-400 dark:from-primary-600 dark:to-primary-400 dark:hover:from-primary-700 dark:hover:to-primary-500 dark:text-primary-50 dark:border-primary-500',
+  outline: 'bg-transparent border-primary-400 text-primary-700 hover:bg-primary-50 dark:border-primary-600 dark:text-primary-200 dark:hover:bg-primary-900/20'
 };
 
 const sizes = {

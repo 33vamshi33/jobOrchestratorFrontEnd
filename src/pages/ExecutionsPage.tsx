@@ -91,28 +91,30 @@ const ExecutionsPage: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-8">
-      <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-extrabold text-primary-600 dark:text-primary-400 tracking-tight">
-          Execution History
-        </h1>
-        <Button onClick={fetchExecutions} isLoading={loading}>
-          Refresh
-        </Button>
-      </div>
-
-      {error && (
-        <div className="rounded-lg bg-red-100 dark:bg-red-900/30 p-4 text-red-700 dark:text-red-400">
-          {error}
+    <div className="min-h-screen bg-zinc-100 dark:bg-zinc-900 p-4">
+      <div className="max-w-7xl mx-auto space-y-8">
+        <div className="flex items-center justify-between mb-6">
+          <h1 className="text-3xl font-extrabold bg-gradient-to-r from-primary-500 to-primary-700 bg-clip-text text-transparent animate-gradient-x">
+            Executions
+          </h1>
+          <Button onClick={fetchExecutions} isLoading={loading}>
+            Refresh
+          </Button>
         </div>
-      )}
-
-      <Table
-        columns={columns}
-        data={executions}
-        isLoading={loading}
-        emptyMessage="No executions found."
-      />
+        <div className="bg-white dark:bg-zinc-800 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700 overflow-hidden">
+          {error && (
+            <div className="rounded-lg bg-red-100 dark:bg-red-900/30 p-4 text-red-700 dark:text-red-400 m-4">
+              {error}
+            </div>
+          )}
+          <Table
+            columns={columns}
+            data={executions}
+            isLoading={loading}
+            emptyMessage="No executions found."
+          />
+        </div>
+      </div>
     </div>
   );
 };

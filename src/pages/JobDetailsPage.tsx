@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getJob, getJobExecutions, runJob, killJob, cleanJob, manualJob, forceRunJob } from '../api/jobs';
 import type { Job, JobExecution } from '../types/job';
 import Button from '../components/ui/Button';
-import Badge from '../components/ui/Badge';
 import JobDetailsCard from '../components/job/JobDetailsCard';
 import JobActionsCard from '../components/job/JobActionsCard';
 import JobExecutionsTable from '../components/job/JobExecutionsTable';
@@ -114,8 +113,8 @@ const JobDetailsPage: React.FC = () => {
         <Button variant="secondary" onClick={() => navigate('/jobs')}>
           ← Back
         </Button>
-        <h1 className="text-3xl font-extrabold text-primary-600 dark:text-primary-400 tracking-tight">
-          {job.name}
+        <h1 className="text-3xl font-extrabold bg-gradient-to-r from-accent-500 to-accent-700 bg-clip-text text-transparent animate-gradient-x mb-8">
+          Job Details
         </h1>
       </div>
 

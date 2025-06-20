@@ -198,16 +198,17 @@ const JobsPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-900 p-8">
+    <div className="min-h-screen bg-zinc-50 dark:bg-zinc-900 p-4">
       <div className="max-w-7xl mx-auto space-y-8">
         <div className="flex items-center justify-between">
-          <h1 className="text-3xl font-extrabold text-primary-600 dark:text-primary-400 tracking-tight">
+          <h1 className="text-3xl font-extrabold bg-gradient-to-r from-primary-500 to-primary-700 bg-clip-text text-transparent animate-gradient-x">
             Jobs
           </h1>
           <Button onClick={() => setRegisterOpen(true)}>
             + Register Job
           </Button>
         </div>
+        <div className="mb-8" />
         {error && <JobsError error={error} />}
         {loading ? (
           <JobsLoading />

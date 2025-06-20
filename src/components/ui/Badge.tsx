@@ -12,8 +12,8 @@ const variants = {
   success: 'bg-green-100 text-green-700 border-green-300 dark:bg-green-700/30 dark:text-green-300 dark:border-green-600',
   error: 'bg-red-100 text-red-700 border-red-300 dark:bg-red-700/30 dark:text-red-300 dark:border-red-600',
   warning: 'bg-yellow-100 text-yellow-700 border-yellow-300 dark:bg-yellow-700/30 dark:text-yellow-300 dark:border-yellow-600',
-  info: 'bg-primary-100 text-primary-700 border-primary-300 dark:bg-primary-700/30 dark:text-primary-300 dark:border-primary-600',
-  default: 'bg-accent-400/20 text-accent-600 border-accent-200 dark:bg-accent-500/30 dark:text-accent-200 dark:border-accent-400'
+  info: 'bg-accent-100 text-accent-700 border-accent-300 dark:bg-accent-700/30 dark:text-accent-200 dark:border-accent-500',
+  default: 'bg-accent-400/20 text-accent-700 border-accent-200 dark:bg-accent-500/30 dark:text-accent-200 dark:border-accent-400'
 };
 
 export default function Badge({

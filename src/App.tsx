@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
-import Topbar from './components/Topbar';
+import SearchBar from './components/SearchBar';
 import JobsPage from './pages/JobsPage';
 import JobDetailsPage from './pages/JobDetailsPage';
 import ExecutionsPage from './pages/ExecutionsPage';
@@ -11,13 +11,17 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Call useTheme here to initialize theme
   useTheme();
 
+  // Example users list, replace with real data as needed
+  const users = ['alice', 'bob', 'charlie'];
+  const handleSearch = () => {};
+
   return (
-    <div className="h-screen w-screen bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-900 dark:to-zinc-950 text-zinc-900 dark:text-zinc-100">
-      <div className="flex h-full">
+    <div className="min-h-screen min-w-full text-zinc-900 dark:text-zinc-100">
+      <SearchBar users={users} onSearch={handleSearch} />
+      <div className="flex h-full pt-[64px]">
         <Sidebar />
         <div className="flex-1 flex flex-col min-w-0">
-          <Topbar />
-          <main className="flex-1 overflow-auto p-6">
+          <main className="flex-1 overflow-auto p-0">
             <div className="max-w-7xl mx-auto">
               {children}
             </div>
